@@ -1,0 +1,40 @@
+name: Run Script and Commit
+
+on:
+  schedule:
+    - cron:  '55,10,25,40 * * * *'
+  push:
+    branches:
+      - main
+
+jobs:
+  run-script-and-commit:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.x
+
+    - name: Setup Python Dependencies
+      run: pip install --upgrade pip && pip install matplotlib pandas requests
+      
+    - name: Execute Scripts
+      env:
+        ENDPOINT: ${{ secrets.ENDPOINT }}
+      run: python ./src/scrape.py && python ./src/plots.py
+
+    - name: Commit Changes
+      run: |
+        git config user.name "${{ github.actor }}"
+        git config user.email "${{ github.actor }}@users.noreply.github.com"
+        git add ./data/log.txt
+        git add ./out/Fig1.svg
+        timestamp=$(date -u)
+        git commit -m "Latest data and plot: ${timestamp}" && git push
+        
+  
