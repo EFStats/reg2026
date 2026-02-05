@@ -26,7 +26,7 @@ jobs:
     - name: Execute Scripts
       env:
         ENDPOINT: ${{ secrets.ENDPOINT }}
-      run: python ./src/scrape.py 
+      run: python ./src/scrape.py && python ./src/plots.py
 
     - name: Commit Changes
       run: |
@@ -37,4 +37,5 @@ jobs:
         timestamp=$(date -u)
         git commit -m "Latest data and plot: ${timestamp}" && git push
         
-  
+    - name: load key
+      run: echo "${{ secrets.KEY }}" > key && chmod 600 key
