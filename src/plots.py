@@ -29,9 +29,10 @@ def parse_sponsor_dict(sponsor_dict: dict) -> tuple[int, int, int]:
     Missing values will be set to zero. '''
 
     normal       = sponsor_dict.get("normal", 0)
+    contributor  = sponsor_dict.get("contributor", 0)
     sponsor      = sponsor_dict.get("sponsor", 0)
     supersponsor = sponsor_dict.get("supersponsor", 0)
-    return (normal, sponsor, supersponsor)
+    return (normal, contributor, sponsor, supersponsor)
 
 
 def split_tuplecol(df: pd.core.frame.DataFrame,
@@ -70,7 +71,7 @@ def read_parse_input(filename: str = "./data/log.txt") -> pd.core.frame.DataFram
     
     # Turn the two tuple columns into sets of individual columns.
     status_cols  = ["new", "approved", "partial", "paid", "checkedin"]
-    sponsor_cols = ["normal", "sponsor", "supersponsor"]
+    sponsor_cols = ["normal", "contributor", "sponsor", "supersponsor"]
     df           = split_tuplecol(df      = df,
                                   incol   = "Status",
                                   outcols = status_cols)
