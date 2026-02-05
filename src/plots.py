@@ -201,22 +201,28 @@ def makeplots(df: pd.core.frame.DataFrame,
 
     ax = axes.flat[1]
     ax.set_visible(True)
-    nb_normal = df.iloc[-1,:].normal
-    nb_spons  = df.iloc[-1,:].sponsor
-    nb_super  = df.iloc[-1,:].supersponsor
+    nb_normal      = df.iloc[-1,:].normal
+    nb_contributor = df.iloc[-1,:].contributor
+    nb_spons       = df.iloc[-1,:].sponsor
+    nb_super       = df.iloc[-1,:].supersponsor
     
     ax.barh(y     = 0,
             width = nb_normal,
-            color = eflightergreen,
+            color = eflightestgreen,
             label = "Normal")
     ax.barh(y     = 0,
-            width = nb_spons,
+            width = nb_contributor,
             left  = nb_normal,
+            color = eflightergreen,
+            label = "Contributor")
+    ax.barh(y     = 0,
+            width = nb_spons,
+            left  = nb_normal + nb_contributor,
             color = eflightgreen,
             label = "Sponsor")
     ax.barh(y     = 0,
             width = nb_super,
-            left  = nb_normal + nb_spons,
+            left  = nb_normal + nb_contributor + nb_spons,
             color = efgreen,
             label = "Supersponsor")
     
