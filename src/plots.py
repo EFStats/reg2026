@@ -187,7 +187,7 @@ def makeplots(df: pd.core.frame.DataFrame,
                    which     = "both",
                    labelsize = s,
                    pad       = 10)
-    ax.set_ylim((0, 1000))
+    ax.set_ylim((0, 3000))
     
     # Legend
     ax.legend(loc      = 9,
