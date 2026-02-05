@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Eurofurence 30 Reg Dashboard</title>
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			
+			body {
+				font-family: sans-serif;
+			}
+			main {
+				margin: 50px auto;
+				padding: 50px 10px;
+				text-align: center;
+				box-shadow: 0 0 8px #000;
+				max-width: 1280px;
+			}
+			img {
+				max-width: 100%;
+			}
+			p {
+				text-align: left;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<main>
+			<h1>Eurofurence 30: Internal Reg Dashboard</h1>
+			<img id="image" src="" alt="loading..." />
+			<p>updating in: <span id="countdown"></span></p>
+		</main>
+		
+		<script>
+			const url = 'out/Fig1.svg';
+			const interval = 10000;
+			let counter = interval;
+
+			const image = document.getElementById('image');
+			const countdown = document.getElementById('countdown');
+
+			function update_image() {
+				image.src = `${url}?${Date.now()}`;
+			}
+
+			update_image();
+
+			setInterval(() => {
+				counter -= 1000;
+				countdown.innerText = `${counter / 1000}s`;
+				if (counter <= 0) {
+					update_image();
+					counter = interval;
+				};
+			}, 1000);
+		</script>
+	</body>
+</html>
