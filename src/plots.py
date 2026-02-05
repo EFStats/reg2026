@@ -348,4 +348,4 @@ if __name__ == "__main__":
     # Last year's data
     # ef2025 = read_parse_input("./data/log2025_daywise.csv")
     
-    makeplots(ef2025, None)
+    makeplots(ef2026, None)
