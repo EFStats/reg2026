@@ -26,7 +26,7 @@ jobs:
     - name: Execute Scripts
       env:
         ENDPOINT: ${{ secrets.ENDPOINT }}
-      run: python ./src/scrape.py && python ./src/plots.py
+      run: python ./src/scrape.py 
 
     - name: Commit Changes
       run: |
