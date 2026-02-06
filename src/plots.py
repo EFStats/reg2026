@@ -259,20 +259,20 @@ def makeplots(df: pd.core.frame.DataFrame,
     df_last_daywise = daywise(df_last, offset = 33)
     
     # Set up plot and plot the two time-courses
-    #ax = axes.flat[2]
-    #ax.set_visible(True)
-    #ax.plot(df_daywise.idx,
-    #        df_daywise.TotalCount,
-    #        lw     = 2,
-    #        c      = efgreen,
-    #        label  = "2025",
-    #        zorder = 100)
-    #ax.plot(df_last_daywise.idx,
-    #        df_last_daywise.TotalCount,
-    #        lw    = 2,
-    #        c     = eflightgreen,
-    #        label = "2024")
-    #ax.vlines([200], 0, 10000, color = "grey", ls=":", label = "EF 2025 Begins")
+    ax = axes.flat[2]
+    ax.set_visible(True)
+    ax.plot(df_daywise.idx,
+            df_daywise.TotalCount,
+            lw     = 2,
+            c      = efgreen,
+            label  = "2026",
+            zorder = 100)
+    ax.plot(df_last_daywise.idx,
+            df_last_daywise.TotalCount,
+            lw    = 2,
+            c     = eflightgreen,
+            label = "2025")
+    ax.vlines([192], 0, 10000, color = "grey", ls=":", label = "EF 2026 Begins")
 
     
     # x axis
