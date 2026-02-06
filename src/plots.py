@@ -255,8 +255,8 @@ def makeplots(df: pd.core.frame.DataFrame,
     ####################
         
     # We need daywise data for the bottom-left plot
-    #df_daywise      = daywise(df, offset = 33)
-    #df_last_daywise = daywise(df_last, offset = 3)
+    df_daywise      = daywise(df, offset = 4)
+    df_last_daywise = daywise(df_last, offset = 33)
     
     # Set up plot and plot the two time-courses
     #ax = axes.flat[2]
@@ -353,6 +353,6 @@ if __name__ == "__main__":
     ef2026 = read_parse_input("./data/log.txt")
     
     # Last year's data
-    # ef2025 = read_parse_input("./data/log2025_daywise.csv")
+    ef2025 = pd.read_csv("./data/log2025_daywise.csv")
     
-    makeplots(ef2026, None)
+    makeplots(ef2026, ef2025)
