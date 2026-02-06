@@ -276,24 +276,24 @@ def makeplots(df: pd.core.frame.DataFrame,
 
     
     # x axis
-    #ax.set_xlabel(xlabel   = "Day After Reg Opening",
-    #              fontsize = s,
-    #              labelpad = 10)
-    #ax.tick_params(axis      = "x",
-    #               which     = "both",
-    #               labelsize = s,
-    #               pad       = 10)
-    #ax.set_xlim((-5, 250))
+    ax.set_xlabel(xlabel   = "Day After Reg Opening",
+                  fontsize = s,
+                  labelpad = 10)
+    ax.tick_params(axis      = "x",
+                   which     = "both",
+                   labelsize = s,
+                   pad       = 10)
+    ax.set_xlim((-5, 250))
  
     # y axis
-    #ax.set_ylabel(ylabel  = "Total Regs",
-    #             fontsize = s,
-    #             labelpad = 10)
-    #ax.tick_params(axis      = "y",
-    #               which     = "both",
-    #               labelsize = s,
-    #               pad       = 10)
-    #ax.set_ylim((0, 6000))
+    ax.set_ylabel(ylabel  = "Total Regs",
+                 fontsize = s,
+                 labelpad = 10)
+    ax.tick_params(axis      = "y",
+                   which     = "both",
+                   labelsize = s,
+                   pad       = 10)
+    ax.set_ylim((0, 6000))
     
     # Legend
     ax.legend(loc      = 2,
