@@ -102,7 +102,8 @@ def daywise(df: pd.core.frame.DataFrame,
 
 
 def makeplots(df: pd.core.frame.DataFrame,
-              df_last: pd.core.frame.DataFrame) -> None:
+              df_last: pd.core.frame.DataFrame,
+              df_lastlast: pd.core.frame.DataFrame) -> None:
 
     ##################        
     # Prepare figure #
@@ -255,8 +256,9 @@ def makeplots(df: pd.core.frame.DataFrame,
     ####################
         
     # We need daywise data for the bottom-left plot
-    df_daywise      = daywise(df, offset = 4)
-    df_last_daywise = daywise(df_last, offset = 33)
+    df_daywise          = daywise(df, offset = 4)
+    df_last_daywise     = daywise(df_last, offset = 33)
+    df_lastlast_daywise = daywise(df_lastlast, offset = 4)
     
     # Set up plot and plot the two time-courses
     ax = axes.flat[2]
@@ -272,6 +274,11 @@ def makeplots(df: pd.core.frame.DataFrame,
             lw    = 2,
             c     = eflightgreen,
             label = "2025")
+    ax.plot(df_lastlast_daywise.idx,
+            df_lastlast_daywise.TotalCount,
+            lw    = 2,
+            c     = eflightergreen,
+            label = "2024")
     ax.vlines([192], 0, 10000, color = "grey", ls=":", label = "EF 2026 Begins")
 
     
@@ -352,7 +359,8 @@ if __name__ == "__main__":
     # This year's data, from our own logger
     ef2026 = read_parse_input("./data/log.txt")
     
-    # Last year's data
+    # Two last years
     ef2025 = pd.read_csv("./data/log2025_daywise.csv")
+    ef2024 = pd.read_csv("./data/log2024_daywise.csv")
     
-    makeplots(ef2026, ef2025)
+    makeplots(ef2026, ef2025, ef2024)
