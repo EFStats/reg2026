@@ -303,7 +303,7 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax.set_ylim((0, 7000))
     
     # Legend
-    ax.legend(loc      = 2,
+    ax.legend(loc      = 8,
               fontsize = 15,
               ncols    = 1,
               frameon  = False)
