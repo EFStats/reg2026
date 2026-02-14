@@ -236,16 +236,16 @@ def makeplots(df: pd.core.frame.DataFrame,
             label = "Supersponsor")
 
     # Year 2025
-    ax.barh(y = 0,
+    ax.barh(y = 1,
             width = 63.8,
             color = eflightestgreen)
-    ax.barh(y = 0,
+    ax.barh(y = 1,
             width = 19.9,
             left  = 63.8,
             color = eflightgreen)
-    ax.barh(y = 0,
-            width = 19.9 + 63.8,
-            left  = 16.3,
+    ax.barh(y = 1,
+            width = 16.3,
+            left  = 19.9 + 63.8,
             color = efgreen)
 
     # Year 2024
