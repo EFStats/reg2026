@@ -188,7 +188,7 @@ def makeplots(df: pd.core.frame.DataFrame,
                    which     = "both",
                    labelsize = s,
                    pad       = 10)
-    ax.set_ylim((0, 7000))
+    ax.set_ylim((0, 8000))
     
     # Legend
     ax.legend(loc      = 9,
@@ -197,11 +197,11 @@ def makeplots(df: pd.core.frame.DataFrame,
               frameon  = False)
 
 
-    ##############
-    # Right plot #
-    ##############
+    ####################
+    # Bottom-left plot #
+    ####################
 
-    ax = axes.flat[1]
+    ax = axes.flat[2]
     ax.set_visible(True)
     nb_normal      = df.iloc[-1,:].normal
     nb_contributor = df.iloc[-1,:].contributor
@@ -291,9 +291,9 @@ def makeplots(df: pd.core.frame.DataFrame,
               frameon  = False)
 
 
-    ####################
-    # Bottom-left plot #
-    ####################
+    ##############
+    # Right plot #
+    ##############
         
     # We need daywise data for the bottom-left plot
     df_daywise          = daywise(df, offset = 4)
@@ -301,7 +301,7 @@ def makeplots(df: pd.core.frame.DataFrame,
     df_lastlast_daywise = daywise(df_lastlast, offset = 4)
     
     # Set up plot and plot the two time-courses
-    ax = axes.flat[2]
+    ax = axes.flat[1]
     ax.set_visible(True)
     ax.plot(df_daywise.idx,
             df_daywise.TotalCount,
