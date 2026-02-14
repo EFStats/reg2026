@@ -406,19 +406,19 @@ def makeplots(df: pd.core.frame.DataFrame,
             ls    = "--",
             label = "2025: Sponsor")
 
-    ax.plot(df_lastlast_daywise.idx,
-            df_lastlast_daywise.supersponsor,
-            lw     = 2,
-            c      = efgreen,
-            ls     = ":",
-            label  = "2024: Supersponsor",
-            zorder = 100)
-    ax.plot(df_lastlast_daywise.idx,
-            df_lastlast_daywise.sponsor,
-            lw    = 2,
-            c     = eflightgreen,
-            ls    = ":",
-            label = "2024: Sponsor")
+    #ax.plot(df_lastlast_daywise.idx,
+    #        df_lastlast_daywise.supersponsor,
+    #        lw     = 2,
+    #        c      = efgreen,
+    #        ls     = ":",
+    #        label  = "2024: Supersponsor",
+    #        zorder = 100)
+    #ax.plot(df_lastlast_daywise.idx,
+    #        df_lastlast_daywise.sponsor,
+    #        lw    = 2,
+    #        c     = eflightgreen,
+    #        ls    = ":",
+    #        label = "2024: Sponsor")
 
     ax.vlines([192], 0, 10000, color = "grey", ls="-", label = "EF 2026 Begins")
 
