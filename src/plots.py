@@ -385,13 +385,26 @@ def makeplots(df: pd.core.frame.DataFrame,
             ls     = "-",
             label  = "2026: Supersponsor",
             zorder = 100)
-    ax.plot(df_last_daywise.idx,
-            df_last_daywise.sponsor,
+    ax.plot(df_daywise.idx,
+            df_daywise.sponsor,
             lw    = 2,
             c     = eflightgreen,
             ls    = "-",
             label = "2026: Sponsor")
-
+    
+    ax.plot(df_last_daywise.idx,
+            df_last_daywise.supersponsor,
+            lw     = 2,
+            c      = efgreen,
+            ls     = "--",
+            label  = "2026: Supersponsor",
+            zorder = 100)
+    ax.plot(df_last_daywise.idx,
+            df_last_daywise.sponsor,
+            lw    = 2,
+            c     = eflightgreen,
+            ls    = "--",
+            label = "2026: Sponsor")
 
     
     ###############
