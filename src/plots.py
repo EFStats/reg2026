@@ -228,7 +228,7 @@ def makeplots(df: pd.core.frame.DataFrame,
             c     = efgreen,
             ls    = ":",
             label = "2024")
-    ax.vlines([192], 0, 10000, color = "grey", ls=":", label = "EF 2026 Begins")
+    ax.vlines([192], 0, 10000, color = "grey", ls="-", label = "EF 2026 Begins")
 
     
     # x axis
