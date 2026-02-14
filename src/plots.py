@@ -107,7 +107,6 @@ def read_parse_csv(filename: str) -> pd.core.frame.DataFrame:
     return df
 
 
-
 def daywise(df: pd.core.frame.DataFrame,
     offset: int) -> pd.core.frame.DataFrame:
     ''' Calculate day-wise count'''
@@ -115,7 +114,7 @@ def daywise(df: pd.core.frame.DataFrame,
     # Get last count for every day
     df["Date"]  = pd.to_datetime(df['CurrentDateTimeUtc']).dt.strftime('%m/%d/%Y')
     df          = df.groupby("Date").agg("last").reset_index()
-    df          = df.loc[:, ["Date", "TotalCount"]]
+    df          = df.loc[:, ["Date", "TotalCount", "normal", "contributor", "sponsor", "supersponsor]]
     
     # Add day index, shifted by offset of three,
     # s.t. day 0 is the day of reg opening
@@ -378,6 +377,21 @@ def makeplots(df: pd.core.frame.DataFrame,
     
     ax = axes.flat[3]
     ax.set_visible(True)
+  
+    ax.plot(df_daywise.idx,
+            df_daywise.supersponsor,
+            lw     = 2,
+            c      = efgreen,
+            ls     = "-",
+            label  = "2026: Supersponsor",
+            zorder = 100)
+    ax.plot(df_last_daywise.idx,
+            df_last_daywise.sponsor,
+            lw    = 2,
+            c     = eflightgreen,
+            ls    = "-",
+            label = "2026: Sponsor")
+
 
     
     ###############
