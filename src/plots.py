@@ -237,7 +237,7 @@ def makeplots(df: pd.core.frame.DataFrame,
     
     
     # x axis
-    ax.set_xlabel(xlabel   = "Fraction",
+    ax.set_xlabel(xlabel   = "Fraction [%]",
                   fontsize = s,
                   labelpad = 10)
     ax.tick_params(axis      = "x",
@@ -252,7 +252,7 @@ def makeplots(df: pd.core.frame.DataFrame,
  
     # y axis
     ax.set_ylabel(ylabel  = "")
-    ax.set_ylim((-1.5, 1.5))
+    ax.set_ylim((-1.5, 3.5))
     ax.set_yticks([0])
     ax.set_yticklabels([2026])
     
