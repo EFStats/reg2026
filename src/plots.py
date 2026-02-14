@@ -53,13 +53,13 @@ def split_tuplecol(df: pd.core.frame.DataFrame,
     return df
 
 
-def read_parse_input(filename: str = "./data/log.txt") -> pd.core.frame.DataFrame:
+def read_parse_json(filename: str = "./data/log.txt") -> pd.core.frame.DataFrame:
     # For now, we only need the time stamp, the total count (for sanity
     # checks), the reg status and the sponsor category column.
     try:
         df = pd.read_json(path_or_buf=filename, lines = True)
     except ValueError as e:
-        sys.exit(f"read_parse_input: Error while loading source data: {e}")
+        sys.exit(f"read_parse_json: Error while loading source data: {e}")
     df = df.loc[:, ["CurrentDateTimeUtc", "TotalCount", "Status", "Sponsor"]]
     
     # Parse timestamp column via direct conversion
@@ -80,6 +80,17 @@ def read_parse_input(filename: str = "./data/log.txt") -> pd.core.frame.DataFram
                                   outcols = sponsor_cols)
     
     return df
+
+def read_parse_csv(filename: str) -> pd.core.frame.DataFrame:
+    try:
+        df = pd.read_csv(filename)
+    except ValueError as e:
+        sys.exit(f"read_parse_csv: Error while loading source data: {e}")
+
+    # TODO
+
+    return df
+
 
 
 def daywise(df: pd.core.frame.DataFrame,
@@ -356,21 +367,7 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax = axes.flat[3]
     ax.set_visible(True)
 
-    ax.plot(df_daywise.idx,
-            df_daywise.supersonsor,
-            lw     = 2,
-            c      = efgreen,
-            ls     = "-",
-            label  = "2026 Supersponsors",
-            zorder = 100)
-    ax.plot(df_daywise.idx,
-            df_daywise.sponsor,
-            lw     = 2,
-            c      = eflightgreen,
-            ls     = "-",
-            label  = "2026 Sponsor",
-            zorder = 
-
+    
     ###############
     # Annotations #
     ###############
@@ -418,10 +415,10 @@ f'''{nb_normal} total regs ({nb_normal} normal, {nb_contributor} contributors, {
 
 if __name__ == "__main__":
     # This year's data, from our own logger
-    ef2026 = read_parse_input("./data/log.txt")
+    ef2026 = read_parse_json("./data/log.txt")
     
     # Two last years
-    ef2025 = pd.read_csv("./data/log2025_daywise.csv")
-    ef2024 = pd.read_csv("./data/log2024_daywise.csv")
+    ef2025 = read_parse_csv("./data/log2025_daywise.csv")
+    ef2024 = read_parse_csv("./data/log2024_daywise.csv")
     
     makeplots(ef2026, ef2025, ef2024)
