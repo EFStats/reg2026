@@ -207,37 +207,44 @@ def makeplots(df: pd.core.frame.DataFrame,
     nb_contributor = df.iloc[-1,:].contributor
     nb_spons       = df.iloc[-1,:].sponsor
     nb_super       = df.iloc[-1,:].supersponsor
+    nb_total       = nb_normal + nb_contributor + nb_spons + nb_super
+
+    fr_normal      = nb_normal      / nb_total * 100
+    fr_contributor = nb_contributor / nb_total * 100
+    fr_spons       = nb_spons       / nb_total * 100
+    fr_super       = nb_super       / nb_total * 100
+                  
     
     ax.barh(y     = 0,
-            width = nb_normal,
+            width = fr_normal,
             color = eflightestgreen,
             label = "Normal")
     ax.barh(y     = 0,
-            width = nb_contributor,
-            left  = nb_normal,
+            width = fr_contributor,
+            left  = fr_normal,
             color = eflightergreen,
             label = "Contributor")
     ax.barh(y     = 0,
-            width = nb_spons,
-            left  = nb_normal + nb_contributor,
+            width = fr_spons,
+            left  = fr_normal + fr_contributor,
             color = eflightgreen,
             label = "Sponsor")
     ax.barh(y     = 0,
-            width = nb_super,
-            left  = nb_normal + nb_contributor + nb_spons,
+            width = fr_super,
+            left  = fr_normal + fr_contributor + fr_spons,
             color = efgreen,
             label = "Supersponsor")
     
     
     # x axis
-    ax.set_xlabel(xlabel   = "Count",
+    ax.set_xlabel(xlabel   = "Fraction",
                   fontsize = s,
                   labelpad = 10)
     ax.tick_params(axis      = "x",
                    which     = "both",
                    labelsize = s,
                    pad       = 10)
-    ax.set_xlim((0, 6000))
+    ax.set_xlim((0, 100))
  
     # y axis
     ax.set_ylabel(ylabel  = "")
@@ -331,7 +338,7 @@ For questions, contact @GermanCoyote.'''
     checkedin = df.checkedin.tolist()[-1]
     total     = new + approved + partial + paid + checkedin
     annot     = \
-f'''{total} total regs, out of which {partial + paid} paid at least partially.'''
+f'''{nb_total} total regs, out of which {partial + paid} paid at least partially.'''
     axes.flat[0].annotate(text     = annot,
                           xy       = (0.005, 0.005),
                           xycoords = 'axes fraction',
@@ -339,9 +346,8 @@ f'''{total} total regs, out of which {partial + paid} paid at least partially.''
 
 
     # Upper-right plots
-    total    = nb_normal + nb_contributor + nb_spons + nb_super
     annot    = \
-f'''{total} total regs ({nb_normal} normal, {nb_contributor} contributors, {nb_spons} sponsors, {nb_super} supersponsors).'''
+f'''{nb_normal} total regs ({nb_normal} normal, {nb_contributor} contributors, {nb_spons} sponsors, {nb_super} supersponsors).'''
     axes.flat[1].annotate(text     = annot,
                           xy       = (0.005, 0.005),
                           xycoords = 'axes fraction',
