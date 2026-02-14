@@ -406,7 +406,34 @@ def makeplots(df: pd.core.frame.DataFrame,
             ls    = "--",
             label = "2026: Sponsor")
 
+
+    ax.vlines([192], 0, 10000, color = "grey", ls="-", label = "EF 2026 Begins")
+
+    # x axis
+    ax.set_xlabel(xlabel   = "Day After Reg Opening",
+                  fontsize = s,
+                  labelpad = 10)
+    ax.tick_params(axis      = "x",
+                   which     = "both",
+                   labelsize = s,
+                   pad       = 10)
+    ax.set_xlim((-5, 250))
+ 
+    # y axis
+    ax.set_ylabel(ylabel  = "Total Regs",
+                 fontsize = s,
+                 labelpad = 10)
+    ax.tick_params(axis      = "y",
+                   which     = "both",
+                   labelsize = s,
+                   pad       = 10)
+    ax.set_ylim((0, 8000))
     
+    # Legend
+    ax.legend(loc      = 8,
+              fontsize = 15,
+              ncols    = 1,
+              frameon  = False)
     ###############
     # Annotations #
     ###############
