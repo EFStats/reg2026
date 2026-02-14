@@ -241,14 +241,14 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax.plot(df_last_daywise.idx,
             df_last_daywise.TotalCount,
             lw    = 2,
-            c     = efgreen,
-            ls    = "--",
+            c     = eflightgreen,
+            ls    = "-",
             label = "2025")
     ax.plot(df_lastlast_daywise.idx,
             df_lastlast_daywise.TotalCount,
             lw    = 2,
-            c     = efgreen,
-            ls    = ":",
+            c     = eflightergreen,
+            ls    = "-",
             label = "2024")
     ax.vlines([192], 0, 10000, color = "grey", ls="-", label = "EF 2026 Begins")
 
@@ -388,15 +388,15 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax.plot(df_daywise.idx,
             df_daywise.sponsor,
             lw    = 2,
-            c     = eflightgreen,
-            ls    = "-",
+            c     = efgreen,
+            ls    = "--",
             label = "2026: Sponsor")
     
     ax.plot(df_last_daywise.idx,
             df_last_daywise.supersponsor,
             lw     = 2,
-            c      = efgreen,
-            ls     = "--",
+            c      = eflightgreen,
+            ls     = "-",
             label  = "2025: Supersponsor",
             zorder = 100)
     ax.plot(df_last_daywise.idx,
