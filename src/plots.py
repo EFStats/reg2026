@@ -417,7 +417,7 @@ def makeplots(df: pd.core.frame.DataFrame,
             df_lastlast_daywise.sponsor,
             lw    = 2,
             c     = eflightgreen,
-            ls    = "-:",
+            ls    = ":",
             label = "2024: Sponsor")
 
     ax.vlines([192], 0, 10000, color = "grey", ls="-", label = "EF 2026 Begins")
@@ -447,6 +447,9 @@ def makeplots(df: pd.core.frame.DataFrame,
               fontsize = 15,
               ncols    = 1,
               frameon  = False)
+   
+                  
+                  
     ###############
     # Annotations #
     ###############
