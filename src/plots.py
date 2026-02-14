@@ -249,7 +249,17 @@ def makeplots(df: pd.core.frame.DataFrame,
             color = efgreen)
 
     # Year 2024
-    # tbd
+    ax.barh(y = 2,
+            width = 73,
+            color = eflightestgreen)
+    ax.barh(y = 2,
+            width = 16.3,
+            left  = 73,
+            color = eflightgreen)
+    ax.barh(y = 2,
+            width = 10.6,
+            left  = 73 + 16.3,
+            color = efgreen)
     
                   
     
