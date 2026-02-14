@@ -90,7 +90,7 @@ def read_parse_csv(filename: str) -> pd.core.frame.DataFrame:
     # Parse timestamp column via direct conversion
     df.CurrentDateTimeUtc = pd.to_datetime(df.CurrentDateTimeUtc)
 
-    # Parse 'Status' and 'Sponsor' column from dicts to tuples.
+    # Parse 'Status' and 'Sponsor' column from !stringified! dicts to tuples.
     df.Status  = df.Status.apply(lambda s: parse_status_dict(eval(s)))
     df.Sponsor = df.Sponsor.apply(lambda s: parse_sponsor_dict(eval(s)))
 
@@ -112,19 +112,16 @@ def daywise(df: pd.core.frame.DataFrame,
     offset: int) -> pd.core.frame.DataFrame:
     ''' Calculate day-wise count'''
 
-    # Working copy
-    out          = df.copy()
-
     # Get last count for every day
-    out["Date"]  = pd.to_datetime(df['CurrentDateTimeUtc']).dt.strftime('%m/%d/%Y')
-    out          = out.groupby("Date").agg("last").reset_index()
-    out          = out.loc[:, ["Date", "TotalCount"]]
+    df["Date"]  = pd.to_datetime(df['CurrentDateTimeUtc']).dt.strftime('%m/%d/%Y')
+    df          = df.groupby("Date").agg("last").reset_index()
+    df          = df.loc[:, ["Date", "TotalCount"]]
     
     # Add day index, shifted by offset of three,
     # s.t. day 0 is the day of reg opening
-    out["idx"] = np.arange(0, len(out)) - offset
+    df["idx"] = np.arange(0, len(out)) - offset
 
-    return out
+    return df
 
 
 def makeplots(df: pd.core.frame.DataFrame,
