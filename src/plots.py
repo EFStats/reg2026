@@ -241,11 +241,11 @@ def makeplots(df: pd.core.frame.DataFrame,
             color = eflightestgreen)
     ax.barh(y = 0,
             width = 19.9,
-            left  = 63.8
+            left  = 63.8,
             color = eflightgreen)
     ax.barh(y = 0,
             width = 19.9 + 63.8,
-            left  = 16.3
+            left  = 16.3,
             color = efgreen)
 
     # Year 2024
