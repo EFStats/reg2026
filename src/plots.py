@@ -363,7 +363,7 @@ For questions, contact @GermanCoyote.'''
                 xycoords = 'figure fraction',
                 fontsize = s/3)
 
-    # Upper-left plots
+    # Upper-left plot
     new       = df.new.tolist()[-1]
     approved  = df.approved.tolist()[-1]
     partial   = df.partial.tolist()[-1]
@@ -378,10 +378,10 @@ f'''{nb_total} total regs, out of which {partial + paid} paid at least partially
                           fontsize = s/3)
 
 
-    # Upper-right plots
+    # Lower-left plot
     annot    = \
 f'''{nb_normal} total regs ({nb_normal} normal, {nb_contributor} contributors, {nb_spons} sponsors, {nb_super} supersponsors).'''
-    axes.flat[1].annotate(text     = annot,
+    axes.flat[2].annotate(text     = annot,
                           xy       = (0.005, 0.005),
                           xycoords = 'axes fraction',
                           fontsize = s/3)
