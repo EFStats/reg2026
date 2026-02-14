@@ -91,8 +91,8 @@ def read_parse_csv(filename: str) -> pd.core.frame.DataFrame:
     df.CurrentDateTimeUtc = pd.to_datetime(df.CurrentDateTimeUtc)
 
     # Parse 'Status' and 'Sponsor' column from dicts to tuples.
-    df.Status  = df.Status.apply(parse_status_dict)
-    df.Sponsor = df.Sponsor.apply(parse_sponsor_dict)
+    df.Status  = df.Status.apply(lambda s: parse_status_dict(eval(s)))
+    df.Sponsor = df.Sponsor.apply(lambda s: parse_sponsor_dict(eval(s)))
 
     # Turn the two tuple columns into sets of individual columns.
     status_cols  = ["new", "approved", "partial", "paid", "checkedin"]
