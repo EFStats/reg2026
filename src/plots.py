@@ -433,7 +433,7 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax.set_xlim((-5, 250))
  
     # y axis
-    ax.set_ylabel(ylabel  = "Total Regs",
+    ax.set_ylabel(ylabel  = "Count",
                  fontsize = s,
                  labelpad = 10)
     ax.tick_params(axis      = "y",
