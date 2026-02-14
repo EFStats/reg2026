@@ -133,7 +133,7 @@ def makeplots(df: pd.core.frame.DataFrame,
 
     s = 20
     fig, axes = plt.subplots(nrows = 2, ncols = 2, figsize = (15,15))
-    plt.subplots_adjust(hspace = .3, wspace=.3)
+    plt.subplots_adjust(hspace = .4, wspace=.4)
     for ax in axes.flat:
         ax.set_visible(False)
 
