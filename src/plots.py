@@ -249,7 +249,8 @@ def makeplots(df: pd.core.frame.DataFrame,
     # y axis
     ax.set_ylabel(ylabel  = "")
     ax.set_ylim((-1.5, 1.5))
-    ax.set_yticks([])
+    ax.set_yticks([0])
+    ax.set_xticklabels([2026])
     
     # Legend
     ax.legend(loc      = 9,
