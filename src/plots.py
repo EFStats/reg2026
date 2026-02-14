@@ -119,7 +119,7 @@ def daywise(df: pd.core.frame.DataFrame,
     
     # Add day index, shifted by offset of three,
     # s.t. day 0 is the day of reg opening
-    df["idx"] = np.arange(0, len(out)) - offset
+    df["idx"] = np.arange(0, len(df)) - offset
 
     return df
 
