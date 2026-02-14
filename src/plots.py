@@ -197,6 +197,67 @@ def makeplots(df: pd.core.frame.DataFrame,
               frameon  = False)
 
 
+
+    ##############
+    # Right plot #
+    ##############
+        
+    # We need daywise data for the bottom-left plot
+    df_daywise          = daywise(df, offset = 4)
+    df_last_daywise     = daywise(df_last, offset = 33)
+    df_lastlast_daywise = daywise(df_lastlast, offset = 4)
+    
+    # Set up plot and plot the two time-courses
+    ax = axes.flat[1]
+    ax.set_visible(True)
+    ax.plot(df_daywise.idx,
+            df_daywise.TotalCount,
+            lw     = 2,
+            c      = efgreen,
+            label  = "2026",
+            zorder = 100)
+    ax.plot(df_last_daywise.idx,
+            df_last_daywise.TotalCount,
+            lw    = 2,
+            c     = efgreen,
+            ls    = "--",
+            label = "2025")
+    ax.plot(df_lastlast_daywise.idx,
+            df_lastlast_daywise.TotalCount,
+            lw    = 2,
+            c     = efgreen,
+            ls    = ":",
+            label = "2024")
+    ax.vlines([192], 0, 10000, color = "grey", ls=":", label = "EF 2026 Begins")
+
+    
+    # x axis
+    ax.set_xlabel(xlabel   = "Day After Reg Opening",
+                  fontsize = s,
+                  labelpad = 10)
+    ax.tick_params(axis      = "x",
+                   which     = "both",
+                   labelsize = s,
+                   pad       = 10)
+    ax.set_xlim((-5, 250))
+ 
+    # y axis
+    ax.set_ylabel(ylabel  = "Total Regs",
+                 fontsize = s,
+                 labelpad = 10)
+    ax.tick_params(axis      = "y",
+                   which     = "both",
+                   labelsize = s,
+                   pad       = 10)
+    ax.set_ylim((0, 8000))
+    
+    # Legend
+    ax.legend(loc      = 8,
+              fontsize = 15,
+              ncols    = 1,
+              frameon  = False)
+
+
     ####################
     # Bottom-left plot #
     ####################
@@ -261,9 +322,6 @@ def makeplots(df: pd.core.frame.DataFrame,
             left  = 73 + 16.3,
             color = efgreen)
     
-                  
-    
-    
     # x axis
     ax.set_xlabel(xlabel   = "Fraction [%]",
                   fontsize = s,
@@ -291,63 +349,14 @@ def makeplots(df: pd.core.frame.DataFrame,
               frameon  = False)
 
 
-    ##############
-    # Right plot #
-    ##############
-        
-    # We need daywise data for the bottom-left plot
-    df_daywise          = daywise(df, offset = 4)
-    df_last_daywise     = daywise(df_last, offset = 33)
-    df_lastlast_daywise = daywise(df_lastlast, offset = 4)
+    #####################
+    # Bottom-right plot #
+    #####################
     
-    # Set up plot and plot the two time-courses
-    ax = axes.flat[1]
+    ax = axes.flat[3]
     ax.set_visible(True)
-    ax.plot(df_daywise.idx,
-            df_daywise.TotalCount,
-            lw     = 2,
-            c      = efgreen,
-            label  = "2026",
-            zorder = 100)
-    ax.plot(df_last_daywise.idx,
-            df_last_daywise.TotalCount,
-            lw    = 2,
-            c     = eflightgreen,
-            label = "2025")
-    ax.plot(df_lastlast_daywise.idx,
-            df_lastlast_daywise.TotalCount,
-            lw    = 2,
-            c     = eflightergreen,
-            label = "2024")
-    ax.vlines([192], 0, 10000, color = "grey", ls=":", label = "EF 2026 Begins")
 
     
-    # x axis
-    ax.set_xlabel(xlabel   = "Day After Reg Opening",
-                  fontsize = s,
-                  labelpad = 10)
-    ax.tick_params(axis      = "x",
-                   which     = "both",
-                   labelsize = s,
-                   pad       = 10)
-    ax.set_xlim((-5, 250))
- 
-    # y axis
-    ax.set_ylabel(ylabel  = "Total Regs",
-                 fontsize = s,
-                 labelpad = 10)
-    ax.tick_params(axis      = "y",
-                   which     = "both",
-                   labelsize = s,
-                   pad       = 10)
-    ax.set_ylim((0, 8000))
-    
-    # Legend
-    ax.legend(loc      = 8,
-              fontsize = 15,
-              ncols    = 1,
-              frameon  = False)
-
 
     ###############
     # Annotations #
