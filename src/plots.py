@@ -359,7 +359,9 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax.set_xlim((0, 100))
  
     # y axis
-    ax.set_ylabel(ylabel  = "")
+    ax.set_ylabel(ylabel   = "Year",
+                  fontsize = s,
+                  labelpad = 10)
     ax.set_ylim((-1.5, 4))
     ax.set_yticks([0, 1, 2])
     ax.set_yticklabels([2026, 2025, 2024])
