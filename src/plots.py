@@ -397,15 +397,28 @@ def makeplots(df: pd.core.frame.DataFrame,
             lw     = 2,
             c      = efgreen,
             ls     = "--",
-            label  = "2026: Supersponsor",
+            label  = "2025: Supersponsor",
             zorder = 100)
     ax.plot(df_last_daywise.idx,
             df_last_daywise.sponsor,
             lw    = 2,
             c     = eflightgreen,
             ls    = "--",
-            label = "2026: Sponsor")
+            label = "2025: Sponsor")
 
+    ax.plot(df_lastlast_daywise.idx,
+            df_lastlast_daywise.supersponsor,
+            lw     = 2,
+            c      = efgreen,
+            ls     = ":",
+            label  = "2024: Supersponsor",
+            zorder = 100)
+    ax.plot(df_lastlast_daywise.idx,
+            df_lastlast_daywise.sponsor,
+            lw    = 2,
+            c     = eflightgreen,
+            ls    = "-:",
+            label = "2024: Sponsor")
 
     ax.vlines([192], 0, 10000, color = "grey", ls="-", label = "EF 2026 Begins")
 
@@ -427,7 +440,7 @@ def makeplots(df: pd.core.frame.DataFrame,
                    which     = "both",
                    labelsize = s,
                    pad       = 10)
-    ax.set_ylim((0, 8000))
+    ax.set_ylim((0, 2000))
     
     # Legend
     ax.legend(loc      = 8,
