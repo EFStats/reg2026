@@ -114,7 +114,7 @@ def daywise(df: pd.core.frame.DataFrame,
     # Get last count for every day
     df["Date"]  = pd.to_datetime(df['CurrentDateTimeUtc']).dt.strftime('%m/%d/%Y')
     df          = df.groupby("Date").agg("last").reset_index()
-    df          = df.loc[:, ["Date", "TotalCount", "normal", "contributor", "sponsor", "supersponsor]]
+    df          = df.loc[:, ["Date", "TotalCount", "normal", "contributor", "sponsor", "supersponsor"]]
     
     # Add day index, shifted by offset of three,
     # s.t. day 0 is the day of reg opening
