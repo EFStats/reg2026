@@ -356,7 +356,20 @@ def makeplots(df: pd.core.frame.DataFrame,
     ax = axes.flat[3]
     ax.set_visible(True)
 
-    
+    ax.plot(df_daywise.idx,
+            df_daywise.supersonsor,
+            lw     = 2,
+            c      = efgreen,
+            ls     = "-",
+            label  = "2026 Supersponsors",
+            zorder = 100)
+    ax.plot(df_daywise.idx,
+            df_daywise.sponsor,
+            lw     = 2,
+            c      = eflightgreen,
+            ls     = "-",
+            label  = "2026 Sponsor",
+            zorder = 
 
     ###############
     # Annotations #
