@@ -234,6 +234,24 @@ def makeplots(df: pd.core.frame.DataFrame,
             left  = fr_normal + fr_contributor + fr_spons,
             color = efgreen,
             label = "Supersponsor")
+
+    # Year 2025
+    ax.barh(y = 0,
+            width = 63.8,
+            color = eflightestgreen)
+    ax.barh(y = 0,
+            width = 19.9,
+            left  = 63.8
+            color = eflightgreen)
+    ax.barh(y = 0,
+            width = 19.9 + 63.8,
+            left  = 16.3
+            color = efgreen)
+
+    # Year 2024
+    # tbd
+    
+                  
     
     
     # x axis
