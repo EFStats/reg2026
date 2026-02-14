@@ -87,7 +87,22 @@ def read_parse_csv(filename: str) -> pd.core.frame.DataFrame:
     except ValueError as e:
         sys.exit(f"read_parse_csv: Error while loading source data: {e}")
 
-    # TODO
+    # Parse timestamp column via direct conversion
+    df.CurrentDateTimeUtc = pd.to_datetime(df.CurrentDateTimeUtc)
+
+    # Parse 'Status' and 'Sponsor' column from dicts to tuples.
+    df.Status  = df.Status.apply(parse_status_dict)
+    df.Sponsor = df.Sponsor.apply(parse_sponsor_dict)
+
+    # Turn the two tuple columns into sets of individual columns.
+    status_cols  = ["new", "approved", "partial", "paid", "checkedin"]
+    sponsor_cols = ["normal", "contributor", "sponsor", "supersponsor"]
+    df           = split_tuplecol(df      = df,
+                                  incol   = "Status",
+                                  outcols = status_cols)
+    df           = split_tuplecol(df      = df,
+                                  incol   = "Sponsor",
+                                  outcols = sponsor_cols)
 
     return df
 
