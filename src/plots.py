@@ -483,7 +483,7 @@ f'''{nb_total} total regs, out of which {partial + paid} paid at least partially
 
     # Lower-left plot
     annot    = \
-f'''{nb_normal} total regs ({nb_normal} normal, {nb_contributor} contributors, {nb_spons} sponsors, {nb_super} supersponsors).'''
+f'''{nb_normal+nb_contributor+nb_spons+nb_super} total regs ({nb_normal} normal, {nb_contributor} contributors, {nb_spons} sponsors, {nb_super} supersponsors).'''
     axes.flat[2].annotate(text     = annot,
                           xy       = (0.005, 0.005),
                           xycoords = 'axes fraction',
