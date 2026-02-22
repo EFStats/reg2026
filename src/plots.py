@@ -455,7 +455,8 @@ def makeplots(df: pd.core.frame.DataFrame,
     ###############
     # Annotations #
     ###############
-    
+
+    # Figure-level annotation
     last     = str(df.CurrentDateTimeUtc.tolist()[-1]).split(".")[0]
  
     annot    = \
@@ -474,7 +475,7 @@ For questions, contact @GermanCoyote.'''
     checkedin = df.checkedin.tolist()[-1]
     total     = new + approved + partial + paid + checkedin
     annot     = \
-f'''{nb_total} total regs, out of which {partial + paid} paid at least partially.'''
+f'''{total} total regs, out of which {partial + paid} paid at least partially.'''
     axes.flat[0].annotate(text     = annot,
                           xy       = (0.005, 0.005),
                           xycoords = 'axes fraction',
